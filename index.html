@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bien – Full-Stack Developer & AI Systems Builder based in Davao del Sur, Philippines. Laravel, Python, YOLOv8, Computer Vision, C#.">
+<meta name="keywords" content="full-stack developer philippines, laravel developer davao, AI developer, YOLOv8 computer vision, capstone developer, freelance php developer">
+<meta property="og:title" content="Bien | Developer Portfolio">
+<meta property="og:description" content="Full-Stack Developer & AI Systems Builder — Laravel, Python, Computer Vision">
+<meta property="og:type" content="website">
+<title>Bien | Developer Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap');
+
+  :root {
+    --red: #e60012;
+    --signal: #f68d1f;
+    --amber: #ecab37;
+    --nav-gold: #e48600;
+    --canvas: #7a8aba;
+    --canvas-soft: #9fbee7;
+    --lavender: #acace7;
+    --ice: #c0d5e6;
+    --periwinkle: #8ba1d4;
+    --chrome-indigo: #3d4f97;
+    --muted-indigo: #60619c;
+    --platinum: #dedede;
+    --surface: #ffffff;
+    --carbon: #21242e;
+    --hairline: #5a5f8c;
+    --ink: #21242e;
+    --ink-soft: #3d4f97;
+    --on-primary: #ffffff;
+    --systems-teal: #206479;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--canvas);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  #main-nav {
+    background: var(--carbon);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--chrome-indigo);
+  }
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .logo-pill {
+    background: var(--surface);
+    border-radius: 9999px;
+    padding: 3px 10px;
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-right: 16px;
+    border: 1.5px solid var(--red);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    flex: 1;
+  }
+  .nav-links a {
+    color: var(--nav-gold);
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #3a3d4a;
+    transition: background 0.15s;
+  }
+  .nav-links a:hover { background: rgba(228,134,0,0.15); }
+  .nav-chip {
+    background: var(--amber);
+    color: var(--carbon);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-decoration: none;
+    margin-left: 8px;
+    border-top: 1px solid #f5d06a;
+    border-left: 1px solid #f5d06a;
+    border-bottom: 1px solid #b8882a;
+    border-right: 1px solid #b8882a;
+  }
+  .nav-chip:hover { background: var(--nav-gold); }
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--nav-gold);
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 4px 8px;
+  }
+
+  /* ── SUBNAV ── */
+  .subnav {
+    background: var(--canvas-soft);
+    border-bottom: 2px solid var(--chrome-indigo);
+    height: 22px;
+    display: flex;
+    align-items: center;
+  }
+  .subnav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 12px;
+    display: flex;
+    gap: 0;
+  }
+  .subnav a {
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 8px;
+    border-right: 1px solid var(--hairline);
+    line-height: 22px;
+  }
+  .subnav a:hover { color: var(--chrome-indigo); }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 16px 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* ── BEVEL PANEL ── */
+  .panel {
+    background: var(--canvas);
+    border-top: 2px solid #b0c0e0;
+    border-left: 2px solid #b0c0e0;
+    border-bottom: 2px solid var(--chrome-indigo);
+    border-right: 2px solid var(--chrome-indigo);
+    border-radius: 4px;
+  }
+  .panel-header {
+    background: var(--canvas);
+    border-bottom: 1px solid var(--chrome-indigo);
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .panel-header::before {
+    content: '≡';
+    color: var(--chrome-indigo);
+    font-size: 13px;
+  }
+  .panel-body { padding: 12px; }
+
+  /* ── HERO PANEL ── */
+  .hero-panel {
+    background: linear-gradient(135deg, var(--lavender) 0%, var(--periwinkle) 60%, var(--chrome-indigo) 100%);
+    border-top: 3px solid #d0d8f0;
+    border-left: 3px solid #d0d8f0;
+    border-bottom: 3px solid var(--chrome-indigo);
+    border-right: 3px solid var(--chrome-indigo);
+    border-radius: 6px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 12px 12px;
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--canvas-soft);
+    margin-bottom: 6px;
+  }
+  .hero-name {
+    font-size: 48px;
+    font-weight: 900;
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: var(--surface);
+    text-shadow: 3px 3px 0 var(--chrome-indigo), -1px -1px 0 var(--chrome-indigo);
+    -webkit-text-stroke: 1px var(--chrome-indigo);
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: -1px;
+  }
+  .hero-role {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--amber);
+    margin-bottom: 12px;
+    min-height: 22px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0;
+  }
+  .hero-role::after { content: '|'; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero-bio {
+    font-size: 15px;
+    color: var(--surface);
+    line-height: 1.5;
+    max-width: 520px;
+    margin-bottom: 16px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .btn-signal {
+    background: var(--signal);
+    color: var(--on-primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 7px 16px;
+    border-radius: 2px;
+    text-decoration: none;
+    border-top: 1px solid #ffa640;
+    border-left: 1px solid #ffa640;
+    border-bottom: 1px solid #c05000;
+    border-right: 1px solid #c05000;
+    display: inline-block;
+    transition: filter 0.1s;
+  }
+  .btn-signal:hover { filter: brightness(1.1); }
+  .btn-carbon {
+    background: var(--carbon);
+    color: var(--on-primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 7px 16px;
+    border-radius: 0;
+    text-decoration: none;
+    border-top: 1px solid #4a4f60;
+    border-left: 1px solid #4a4f60;
+    border-bottom: 1px solid #0a0c10;
+    border-right: 1px solid #0a0c10;
+    display: inline-block;
+  }
+  .btn-carbon:hover { background: #30354a; }
+  .social-links {
+    display: flex;
+    gap: 6px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .social-chip {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .social-chip:hover { background: rgba(255,255,255,0.22); color: var(--surface); }
+
+  /* ── TERMINAL DECORATION ── */
+  .terminal-block {
+    position: absolute;
+    right: 20px;
+    bottom: 16px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #7dff8a;
+    line-height: 1.7;
+    max-width: 220px;
+  }
+  .terminal-block .t-dim { color: #5a9060; }
+  .terminal-block .t-amber { color: var(--amber); }
+  .terminal-block .t-blue { color: var(--canvas-soft); }
+
+  /* ── 2-COL LAYOUT ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 12px;
+  }
+  .content-col { display: flex; flex-direction: column; gap: 12px; }
+  .side-col { display: flex; flex-direction: column; gap: 12px; }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .stat-card {
+    background: var(--periwinkle);
+    border-top: 2px solid #aabfe0;
+    border-left: 2px solid #aabfe0;
+    border-bottom: 2px solid var(--chrome-indigo);
+    border-right: 2px solid var(--chrome-indigo);
+    border-radius: 3px;
+    padding: 10px 8px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 26px;
+    font-weight: 900;
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: var(--surface);
+    text-shadow: 1px 1px 0 var(--chrome-indigo);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--canvas-soft);
+    margin-top: 3px;
+  }
+
+  /* ── ABOUT TEXT ── */
+  .about-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .about-text p + p { margin-top: 8px; }
+  .about-text strong { font-weight: 700; color: var(--chrome-indigo); }
+
+  /* ── SKILLS GRID ── */
+  .skills-category { margin-bottom: 10px; }
+  .skills-cat-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted-indigo);
+    margin-bottom: 5px;
+    border-bottom: 1px dotted var(--muted-indigo);
+    padding-bottom: 3px;
+  }
+  .skill-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .skill-chip {
+    background: var(--surface);
+    border: 1px solid var(--chrome-indigo);
+    color: var(--ink-soft);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.3px;
+  }
+  .skill-chip.primary {
+    background: var(--chrome-indigo);
+    color: var(--surface);
+    border-color: var(--chrome-indigo);
+  }
+
+  /* ── PROJECT CARDS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .project-card {
+    background: var(--surface);
+    border-top: 2px solid #e0e8f0;
+    border-left: 2px solid #e0e8f0;
+    border-bottom: 2px solid var(--chrome-indigo);
+    border-right: 2px solid var(--chrome-indigo);
+    border-radius: 3px;
+    overflow: hidden;
+    transition: transform 0.15s;
+  }
+  .project-card:hover { transform: translateY(-2px); }
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .project-thumb {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 900;
+    font-family: 'Arial Black', Arial, sans-serif;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+    color: var(--surface);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: -1px;
+  }
+  .project-thumb::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 10px 10px;
+  }
+  .thumb-cellwatch { background: linear-gradient(135deg, #0d1b2a 0%, #1a3a4a 50%, var(--systems-teal) 100%); }
+  .thumb-carshow { background: linear-gradient(135deg, #2a1a0d 0%, #4a2810 50%, #8b4513 100%); }
+  .thumb-condo { background: linear-gradient(135deg, #0d2a1a 0%, #10402a 50%, #1a6040 100%); }
+  .thumb-barangay { background: linear-gradient(135deg, #1a0d2a 0%, #2a1040 50%, var(--chrome-indigo) 100%); }
+  .project-card.featured .project-thumb { height: auto; min-height: 160px; }
+  .project-info { padding: 10px; }
+  .project-badge {
+    background: var(--amber);
+    color: var(--carbon);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 6px;
+    border-radius: 1px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  .project-badge.ai { background: var(--systems-teal); color: var(--surface); }
+  .project-badge.web { background: var(--chrome-indigo); color: var(--surface); }
+  .project-badge.desktop { background: var(--muted-indigo); color: var(--surface); }
+  .project-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .project-desc {
+    font-size: 11px;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .project-result {
+    font-size: 10px;
+    color: var(--systems-teal);
+    font-weight: 700;
+    margin-bottom: 8px;
+    padding: 3px 6px;
+    background: #e8f5f0;
+    border-left: 2px solid var(--systems-teal);
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 8px; }
+  .tag {
+    background: var(--ice);
+    color: var(--chrome-indigo);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 1px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .project-links { display: flex; gap: 5px; }
+  .proj-link {
+    background: var(--carbon);
+    color: var(--on-primary);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    text-decoration: none;
+    border-radius: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .proj-link:hover { background: var(--chrome-indigo); }
+  .proj-link.arrow-btn {
+    background: var(--signal);
+    border-radius: 9999px;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .proj-link.arrow-btn svg {
+    margin: 0;
+  }
+  .inline-icon {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+  .project-card, .stat-card, .social-chip, .rail-btn {
+    cursor: pointer;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item { display: grid; grid-template-columns: 80px 1fr; gap: 10px; padding: 8px 0; border-bottom: 1px dotted var(--muted-indigo); }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-date { font-size: 10px; font-weight: 700; color: var(--muted-indigo); text-transform: uppercase; letter-spacing: 0.3px; padding-top: 1px; }
+  .timeline-content {}
+  .timeline-role { font-size: 12px; font-weight: 700; color: var(--ink); }
+  .timeline-org { font-size: 11px; color: var(--chrome-indigo); font-weight: 700; }
+  .timeline-desc { font-size: 11px; color: #444; line-height: 1.5; margin-top: 3px; }
+  .timeline-tech { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+  .ttech { background: var(--platinum); color: var(--chrome-indigo); font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 1px; text-transform: uppercase; }
+
+  /* ── RIGHT RAIL BUTTONS ── */
+  .rail-btn {
+    background: var(--carbon);
+    color: var(--on-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-top: 1px solid #4a4f60;
+    border-left: 1px solid #4a4f60;
+    border-bottom: 2px solid #0a0c10;
+    border-right: 2px solid #0a0c10;
+    margin-bottom: 6px;
+  }
+  .rail-btn:hover { background: #30354a; }
+  .rail-btn-icon {
+    width: 18px;
+    height: 18px;
+    background: var(--signal);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+    color: var(--surface);
+    font-weight: 900;
+  }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: var(--surface);
+    border-top: 2px solid #e0e8f0;
+    border-left: 2px solid #e0e8f0;
+    border-bottom: 2px solid var(--chrome-indigo);
+    border-right: 2px solid var(--chrome-indigo);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .info-box-tab {
+    background: var(--amber);
+    color: var(--carbon);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+  }
+  .info-box-body {
+    padding: 10px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .info-box-body strong { color: var(--chrome-indigo); }
+
+  /* ── CONTACT SECTION ── */
+  .contact-panel {
+    background: var(--carbon);
+    border-top: 3px solid #4a4f60;
+    border-left: 3px solid #4a4f60;
+    border-bottom: 3px solid #0a0c10;
+    border-right: 3px solid #0a0c10;
+    border-radius: 4px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .contact-heading {
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: var(--surface);
+    text-shadow: 2px 2px 0 var(--chrome-indigo);
+    -webkit-text-stroke: 0.5px var(--chrome-indigo);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .contact-sub {
+    font-size: 11px;
+    color: var(--canvas-soft);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .contact-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--amber);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .contact-note {
+    font-size: 10px;
+    color: var(--muted-indigo);
+    font-style: italic;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 6px; }
+  .form-field {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--surface);
+    font-size: 11px;
+    padding: 7px 10px;
+    border-radius: 2px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    width: 100%;
+    transition: border-color 0.15s;
+  }
+  .form-field:focus { border-color: var(--amber); }
+  .form-field::placeholder { color: rgba(255,255,255,0.35); }
+  textarea.form-field { resize: vertical; min-height: 80px; }
+  .form-submit {
+    background: var(--signal);
+    color: var(--on-primary);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    border-top: 1px solid #ffa640;
+    border-left: 1px solid #ffa640;
+    border-bottom: 2px solid #c05000;
+    border-right: 2px solid #c05000;
+    align-self: flex-start;
+    transition: filter 0.1s;
+  }
+  .form-submit:hover { filter: brightness(1.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--carbon);
+    border-top: 2px solid var(--chrome-indigo);
+    padding: 12px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--canvas-soft);
+  }
+  footer a { color: var(--canvas-soft); text-decoration: none; }
+  footer a:hover { color: var(--amber); }
+
+  /* ── MOBILE MENU ── */
+  .mobile-nav {
+    display: none;
+    background: var(--carbon);
+    border-bottom: 2px solid var(--chrome-indigo);
+    padding: 8px 12px;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .mobile-nav a {
+    color: var(--nav-gold);
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 0;
+    border-bottom: 1px solid #3a3d4a;
+  }
+  .mobile-nav.open { display: flex; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .two-col { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-template-columns: 1fr; }
+    .contact-panel { grid-template-columns: 1fr; }
+    .hero-name { font-size: 32px; }
+    .terminal-block { display: none; }
+    .stats-row { grid-template-columns: repeat(3, 1fr); }
+    .subnav { display: none; }
+  }
+
+  /* ── ACCESSIBILITY ── */
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="logo-pill" aria-label="Home">BIEN.DEV</a>
+    <ul class="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:bien@example.com" class="nav-chip" aria-label="Hire me">Hire Me</a>
+    <button class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+      <svg class="icon-menu" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+</nav>
+<nav class="mobile-nav" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- SUBNAV -->
+<div class="subnav" role="navigation" aria-label="Secondary navigation">
+  <div class="subnav-inner">
+    <a href="https://github.com/aze-last" target="_blank" rel="noopener">GitHub</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Timeline</a>
+    <a href="#contact">Contact</a>
+    <a href="https://github.com/aze-last/Car-Showroom" target="_blank" rel="noopener">Car Showroom</a>
+    <a href="https://github.com/aze-last/CondoFinder" target="_blank" rel="noopener">CondoFinder</a>
+  </div>
+</div>
+
+<!-- PAGE -->
+<main class="page" id="main-content">
+
+  <!-- HERO -->
+  <section class="hero-panel" aria-label="Introduction" id="hero">
+    <div class="hero-eyebrow">// Full-Stack Developer &amp; AI Systems Builder</div>
+    <h1 class="hero-name">BIEN</h1>
+    <div class="hero-role" id="typing-role">Laravel Developer</div>
+    <h3 class="hero-bio">
+      3rd-year BSIT student at Davao Del Sur State College, building production-grade systems across
+      web, desktop, and AI. From computer vision jails to premium car showrooms — I ship real things that solve real problems.
+    </h3>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-signal"><svg class="inline-icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>View Projects</a>
+      <a href="#contact" class="btn-carbon">Download Resume</a>
+    </div>
+    <div class="social-links">
+      <a href="https://github.com/aze-last" class="social-chip" target="_blank" rel="noopener">GitHub <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px; margin-right: 0;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+      <a href="https://linkedin.com" class="social-chip" target="_blank" rel="noopener">LinkedIn <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px; margin-right: 0;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+      <a href="#contact" class="social-chip">Email</a>
+    </div>
+    <div class="terminal-block" aria-hidden="true">
+      <div><span class="t-dim">$</span> python cellwatch.py <span class="t-amber">--live</span></div>
+      <div><span class="t-dim">→</span> YOLOv8n loaded</div>
+      <div><span class="t-dim">→</span> MoveNet MultiPose <span class="t-blue">active</span></div>
+      <div><span class="t-dim">→</span> mAP@0.5: <span class="t-amber">0.798</span></div>
+      <div><span class="t-dim">→</span> Monitoring... ▋</div>
+    </div>
+  </section>
+
+  <!-- ABOUT + SIDE -->
+  <div class="two-col">
+    <div class="content-col">
+
+      <!-- ABOUT -->
+      <section class="panel" id="about" aria-label="About">
+        <div class="panel-header">About Me</div>
+        <div class="panel-body">
+          <div class="stats-row">
+            <div class="stat-card">
+              <div class="stat-num">3+</div>
+              <div class="stat-label">Yrs Coding</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">5+</div>
+              <div class="stat-label">Freelance Clients</div>
+            </div>
+          </div>
+          <div class="about-text">
+            <p>I'm a developer based in <strong>Digos City, Davao del Sur, Philippines</strong>, currently in my 3rd year of BSIT at Davao Del Sur State College (graduating 2027). My specialty is bridging real-world problems with working software — from AI-powered jail monitoring to auction-safe car showrooms.</p>
+            <p>I build across the full stack: <strong>Laravel + Livewire</strong> for rapid web apps, <strong>Python + YOLOv8</strong> for computer vision systems, and <strong>C# + WPF</strong> for desktop tooling. My approach is vibe coding — AI-assisted rapid development that still ships clean, production-ready code.</p>
+            <p>Outside of code, I serve as a <strong>church Music Director</strong> and have a solar power system running at my hillside property in Mayahay. Yes, I am debugging neural networks and also doing cable work on weekends.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="panel" id="skills" aria-label="Skills">
+        <div class="panel-header">Tech Stack</div>
+        <div class="panel-body">
+          <div class="skills-category">
+            <div class="skills-cat-label">Backend / Web</div>
+            <div class="skill-chips">
+              <span class="skill-chip primary">Laravel</span>
+              <span class="skill-chip primary">PHP</span>
+              <span class="skill-chip primary">Livewire</span>
+              <span class="skill-chip">Tailwind CSS</span>
+              <span class="skill-chip">GSAP</span>
+              <span class="skill-chip">Node.js</span>
+              <span class="skill-chip">Socket.io</span>
+            </div>
+          </div>
+          <div class="skills-category" style="margin-top:8px">
+            <div class="skills-cat-label">AI / Machine Learning</div>
+            <div class="skill-chips">
+              <span class="skill-chip primary">Python</span>
+              <span class="skill-chip primary">YOLOv8</span>
+              <span class="skill-chip primary">TensorFlow</span>
+              <span class="skill-chip">MoveNet MultiPose</span>
+              <span class="skill-chip">OpenCV</span>
+              <span class="skill-chip">PyTorch</span>
+              <span class="skill-chip">CustomTkinter</span>
+            </div>
+          </div>
+          <div class="skills-category" style="margin-top:8px">
+            <div class="skills-cat-label">Desktop / Systems</div>
+            <div class="skill-chips">
+              <span class="skill-chip primary">C# / WPF</span>
+              <span class="skill-chip">.NET</span>
+              <span class="skill-chip">MaterialDesign</span>
+              <span class="skill-chip">PaddleOCR</span>
+              <span class="skill-chip">SQLite</span>
+              <span class="skill-chip">SQL / MySQL</span>
+            </div>
+          </div>
+          <div class="skills-category" style="margin-top:8px">
+            <div class="skills-cat-label">Tools / Platforms</div>
+            <div class="skill-chips">
+              <span class="skill-chip">Kaggle / Colab</span>
+              <span class="skill-chip">Ollama / LM Studio</span>
+              <span class="skill-chip">Supabase</span>
+              <span class="skill-chip">Flutter / FlutterFlow</span>
+              <span class="skill-chip">Git / GitHub</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="panel" id="projects" aria-label="Projects">
+        <div class="panel-header">Featured Projects</div>
+        <div class="panel-body" style="padding: 8px;">
+          <div class="projects-grid">
+
+            <!-- CELLWATCH - FEATURED -->
+            <article class="project-card featured" aria-label="CellWatch project">
+              <div class="project-thumb thumb-cellwatch" aria-hidden="true">
+                CELLWATCH
+              </div>
+              <div class="project-info">
+                <span class="project-badge ai">AI / Computer Vision</span>
+                <h3 class="project-title">CellWatch — AI Jail Monitoring System</h3>
+                <p class="project-desc">
+                  Real-time contraband detection (knives, cellphones) and behavior analysis in detention cells using YOLOv8n + MoveNet MultiPose. Trained on 20,848 images across 75 epochs on Kaggle T4 GPU with a velocity-based behavior pipeline.
+                </p>
+                <div class="project-result">
+                  <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color: var(--systems-teal);"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline><polyline points="16 7 22 7 22 13"></polyline></svg>
+                  mAP@0.5: 0.798 · Knife: 0.856 · Cellphone: 0.740 · 5.1h GPU runtime
+                </div>
+                <div class="project-tags">
+                  <span class="tag">YOLOv8</span>
+                  <span class="tag">TensorFlow</span>
+                  <span class="tag">MoveNet</span>
+                  <span class="tag">PyTorch</span>
+                  <span class="tag">CustomTkinter</span>
+                  <span class="tag">SQLite3</span>
+                  <span class="tag">CUDA 11.8</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="proj-link">View Case Study</a>
+                  <a href="#" class="proj-link arrow-btn" aria-label="View project">
+                    <svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CAR SHOWROOM -->
+            <article class="project-card" aria-label="Car Showroom project">
+              <div class="project-thumb thumb-carshow" aria-hidden="true">
+                SHOWROOM
+              </div>
+              <div class="project-info">
+                <span class="project-badge web">Web App</span>
+                <h3 class="project-title">Premium Car Showroom</h3>
+                <p class="project-desc">
+                  Vehicle listing platform with QR-based status management, deposit auction safeguard, GSAP ScrollTrigger animations, and a race-condition-safe sold/available system.
+                </p>
+                <div class="project-result">
+                  <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color: var(--systems-teal);"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  DB row-locking · Idempotent state · GCash + cash deposits
+                </div>
+                <div class="project-tags">
+                  <span class="tag">Laravel 12</span>
+                  <span class="tag">Livewire 4</span>
+                  <span class="tag">GSAP</span>
+                  <span class="tag">Tailwind</span>
+                  <span class="tag">MySQL</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/aze-last/Car-Showroom" class="proj-link" target="_blank" rel="noopener">GitHub <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px; margin-right: 0;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                  <a href="https://github.com/aze-last/Car-Showroom" class="proj-link arrow-btn" aria-label="View repo">
+                    <svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- CONDOFINDER -->
+            <article class="project-card" aria-label="CondoFinder project">
+              <div class="project-thumb thumb-condo" aria-hidden="true">
+                CONDO
+              </div>
+              <div class="project-info">
+                <span class="project-badge web">Web App</span>
+                <h3 class="project-title">CondoFinder</h3>
+                <p class="project-desc">
+                  Airbnb-style condo listing and rental platform built with Laravel + Blade. Multi-role system for landlords and tenants with listing management and notifications.
+                </p>
+                <div class="project-result">
+                  <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color: var(--systems-teal);"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  Full Laravel rental marketplace · Railway deployed
+                </div>
+                <div class="project-tags">
+                  <span class="tag">Laravel</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">MySQL</span>
+                  <span class="tag">Railway</span>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/aze-last/CondoFinder" class="proj-link" target="_blank" rel="noopener">GitHub <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px; margin-right: 0;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                  <a href="https://github.com/aze-last/CondoFinder" class="proj-link arrow-btn" aria-label="View repo">
+                    <svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- BARANGAY AYUDA -->
+            <article class="project-card" aria-label="Barangay Ayuda project">
+              <div class="project-thumb thumb-barangay" aria-hidden="true">
+                BARANGAY
+              </div>
+              <div class="project-info">
+                <span class="project-badge desktop">Desktop</span>
+                <h3 class="project-title">Barangay Ayuda System</h3>
+                <p class="project-desc">
+                  WPF desktop system for barangay cash-for-work and ayuda management. Features OCR attendance scanning, digital ID printing with photo crop dialog, and audit-ready logs.
+                </p>
+                <div class="project-result">
+                  <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color: var(--systems-teal);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  PaddleOCR via C# subprocess · eKalinga+ digital ID printing
+                </div>
+                <div class="project-tags">
+                  <span class="tag">C# / WPF</span>
+                  <span class="tag">.NET</span>
+                  <span class="tag">PaddleOCR</span>
+                  <span class="tag">MaterialDesign</span>
+                  <span class="tag">SQLite</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" class="proj-link">Case Study</a>
+                  <a href="#" class="proj-link arrow-btn" aria-label="View project">
+                    <svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="panel" id="experience" aria-label="Experience">
+        <div class="panel-header">Experience &amp; Education</div>
+        <div class="panel-body">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2024 – Now</div>
+              <div class="timeline-content">
+                <div class="timeline-role">Freelance Web Developer</div>
+                <div class="timeline-org">Local Small Businesses — Davao del Sur, PH</div>
+                <div class="timeline-desc">Building production Laravel apps for local SMEs: POS systems, car showrooms, food ordering kiosks, and rental platforms. Full vibe-coding workflow with AI-assisted rapid development.</div>
+                <div class="timeline-tech">
+                  <span class="ttech">Laravel</span>
+                  <span class="ttech">Livewire</span>
+                  <span class="ttech">MySQL</span>
+                  <span class="ttech">FlutterFlow</span>
+                  <span class="ttech">Supabase</span>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2024 – Now</div>
+              <div class="timeline-content">
+                <div class="timeline-role">Lead Developer — CellWatch (Capstone)</div>
+                <div class="timeline-org">Davao Del Sur State College</div>
+                <div class="timeline-desc">Designed and built an AI-assisted jail monitoring system from scratch: dataset curation (20,848 images), YOLOv8 training pipeline, MoveNet behavior detection, and a full CustomTkinter GUI with SQLite logging.</div>
+                <div class="timeline-tech">
+                  <span class="ttech">Python</span>
+                  <span class="ttech">YOLOv8</span>
+                  <span class="ttech">TensorFlow</span>
+                  <span class="ttech">Kaggle</span>
+                  <span class="ttech">CUDA</span>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2023 – Now</div>
+              <div class="timeline-content">
+                <div class="timeline-role">Music Director</div>
+                <div class="timeline-org">Local Church — Digos City</div>
+                <div class="timeline-desc">Leading worship band and choir. Built BandCue, a LAN PWA (Node.js + Socket.io + WebRTC) for real-time cue delivery from director to musicians during live services.</div>
+                <div class="timeline-tech">
+                  <span class="ttech">Node.js</span>
+                  <span class="ttech">Socket.io</span>
+                  <span class="ttech">WebRTC</span>
+                  <span class="ttech">PWA</span>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2022 – 2027</div>
+              <div class="timeline-content">
+                <div class="timeline-role">BSIT Student</div>
+                <div class="timeline-org">Davao Del Sur State College — Digos City</div>
+                <div class="timeline-desc">Bachelor of Science in Information Technology. Capstone: CellWatch — An AI-Assisted Jail Monitoring System Using MoveNet MultiPose and YOLOv8.</div>
+                <div class="timeline-tech">
+                  <span class="ttech">BSIT</span>
+                  <span class="ttech">Graduating 2027</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- SIDE RAIL -->
+    <aside class="side-col" aria-label="Quick links and info">
+
+      <div class="panel">
+        <div class="panel-header">Quick Links</div>
+        <div class="panel-body" style="padding: 8px;">
+          <a href="https://github.com/aze-last" class="rail-btn" target="_blank" rel="noopener">
+            <div class="rail-btn-icon"><svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+            GitHub Profile
+          </a>
+          <a href="#projects" class="rail-btn">
+            <div class="rail-btn-icon"><svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="3" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+            View Projects
+          </a>
+          <a href="#contact" class="rail-btn">
+            <div class="rail-btn-icon"><svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+            Hire / Contact
+          </a>
+          <a href="#" class="rail-btn">
+            <div class="rail-btn-icon"><svg viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></div>
+            Resume (PDF)
+          </a>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-tab">Current Status</div>
+        <div class="info-box-body">
+          <p><strong>📍 Location:</strong> Digos City, Davao del Sur, PH</p>
+          <p style="margin-top:5px"><strong>🎓 Degree:</strong> BSIT — DSSC (2027)</p>
+          <p style="margin-top:5px"><strong>💼 Status:</strong> Open for freelance &amp; internship</p>
+          <p style="margin-top:5px"><strong>⚡ Stack:</strong> Laravel · Python · C#</p>
+          <p style="margin-top:5px"><strong>🤖 Focus:</strong> AI / Computer Vision</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-box-tab">CellWatch — Latest Run</div>
+        <div class="info-box-body" style="font-family: 'DM Mono', monospace; font-size: 10px; line-height: 1.8;">
+          <div>Precision: <strong>0.874</strong></div>
+          <div>Recall: <strong>0.708</strong></div>
+          <div>mAP@0.5: <strong>0.798</strong></div>
+          <div>Knife mAP50: <strong>0.856</strong></div>
+          <div>Phone mAP50: <strong>0.740</strong></div>
+          <div style="margin-top:5px; color: var(--muted-indigo);">v3 · 75 epochs · 5.12h</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Side Projects</div>
+        <div class="panel-body" style="font-size: 11px; line-height: 1.7;">
+          <div style="margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px dotted var(--muted-indigo);">
+            <strong style="color: var(--chrome-indigo);">BandCue</strong><br>
+            LAN PWA for real-time church band cue delivery via WebRTC + Socket.io
+          </div>
+          <div style="margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px dotted var(--muted-indigo);">
+            <strong style="color: var(--chrome-indigo);">KusinaraHub</strong><br>
+            Food ordering kiosk — Laravel backend + FlutterFlow mobile
+          </div>
+          <div style="margin-bottom: 6px; padding-bottom: 6px; border-bottom: 1px dotted var(--muted-indigo);">
+            <strong style="color: var(--chrome-indigo);">Qwen Ask</strong><br>
+            Chrome extension for local Qwen3:8b LLM via Ollama
+          </div>
+          <div>
+            <strong style="color: var(--chrome-indigo);">Video Karera</strong><br>
+            Arcade horse racing web game with parametric oval track math
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-panel" id="contact" aria-label="Contact">
+    <div>
+      <h2 class="contact-heading">LET'S WORK TOGETHER</h2>
+      <p class="contact-sub">
+        Open for freelance gigs, web dev projects, internships, or capstone collaborations. If you're a local business in Mindanao or anywhere in the PH — let's talk.
+      </p>
+      <span class="contact-email">benregidor@gmail.com</span>
+      <p class="contact-email">Contact #: +63 906 495 7106</p>
+      <p class="contact-note">Usually replies within 24 hours · Available for remote or Davao del Sur onsite</p>
+      <div class="social-links" style="margin-top: 14px;">
+        <a href="https://github.com/aze-last" class="social-chip" target="_blank" rel="noopener">GitHub <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px; margin-right: 0;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+        <a href="#" class="social-chip">LinkedIn <svg class="inline-icon" viewBox="0 0 24 24" width="10" height="10" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px; margin-right: 0;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+        <a href="#" class="social-chip">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" onsubmit="handleSubmit(event)" novalidate>
+        <input type="text" class="form-field" placeholder="Name" name="name" required autocomplete="name" aria-label="Name">
+        <input type="email" class="form-field" placeholder="Email" name="email" required autocomplete="email" aria-label="Email">
+        <textarea class="form-field" placeholder="Message — tell me about your project" name="message" required aria-label="Message"></textarea>
+        <button type="submit" class="form-submit"><svg class="inline-icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>Send Message</button>
+        <p id="form-status" style="color: var(--amber); font-size: 10px; display:none; margin-top: 4px;"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Bien · Digos City, Davao del Sur, PH · Built with Laravel + vanilla HTML/CSS ·
+    <a href="https://github.com/aze-last" target="_blank" rel="noopener">github.com/aze-last</a>
+  </p>
+</footer>
+<!-- GSAP Core & ScrollTrigger -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<script>
+  // Register ScrollTrigger plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Respect user preference for reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    // Fade-in slide-up panels on scroll
+    gsap.utils.toArray('.panel, .project-card, .contact-panel, .info-box').forEach(panel => {
+      gsap.from(panel, {
+        opacity: 0,
+        y: 35,
+        duration: 0.75,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: panel,
+          start: 'top 92%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+
+    // Hero elements entrance cascade
+    gsap.from('.hero-panel > *:not(.terminal-block)', {
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'power2.out'
+    });
+    
+    // Terminal block entrance
+    gsap.from('.terminal-block', {
+      opacity: 0,
+      x: 30,
+      duration: 0.8,
+      delay: 0.5,
+      ease: 'power2.out'
+    });
+  }
+
+  // Typing effect
+  const roles = [
+    'Laravel Developer',
+    'AI Systems Builder',
+    'Python / YOLOv8 Dev',
+    'Freelance Web Dev',
+    'Open Source Builder'
+  ];
+  let roleIdx = 0, charIdx = 0, deleting = false;
+  const roleEl = document.getElementById('typing-role');
+  function typeRole() {
+    const current = roles[roleIdx];
+    if (!deleting) {
+      roleEl.textContent = current.slice(0, charIdx + 1);
+      charIdx++;
+      if (charIdx === current.length) {
+        deleting = true;
+        setTimeout(typeRole, 1600);
+        return;
+      }
+    } else {
+      roleEl.textContent = current.slice(0, charIdx - 1);
+      charIdx--;
+      if (charIdx === 0) {
+        deleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+      }
+    }
+    setTimeout(typeRole, deleting ? 50 : 80);
+  }
+  typeRole();
+
+  // Mobile hamburger
+  const hamburger = document.getElementById('hamburger-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconMenu = hamburger.querySelector('.icon-menu');
+  const iconClose = hamburger.querySelector('.icon-close');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) {
+      iconMenu.style.display = 'none';
+      iconClose.style.display = 'block';
+    } else {
+      iconMenu.style.display = 'block';
+      iconClose.style.display = 'none';
+    }
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      iconMenu.style.display = 'block';
+      iconClose.style.display = 'none';
+    });
+  });
+
+  // Form submit handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const status = document.getElementById('form-status');
+    status.style.display = 'block';
+    status.textContent = '✓ Message received! I\'ll get back to you within 24 hours.';
+    e.target.reset();
+    // Note: connect to a backend endpoint (Formspree, EmailJS server-side, Laravel API)
+    // Never expose API keys in this client-side script.
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
